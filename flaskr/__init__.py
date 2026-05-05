@@ -31,7 +31,7 @@ def create_app(test_config=None):
     sqlalchemy_db.init_app(app)
     Migrate(app, sqlalchemy_db)
 
-     with app.app_context():
+    with app.app_context():
         sqlalchemy_db.create_all()
         conn = sqlite_db.get_db()
         if not conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='user'").fetchone():
