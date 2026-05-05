@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <div class="posts-header">
+    <h1>{% block title %}Posts{% endblock %}</h1>
+
+    {% if g.user %}
+      <a class="btn primary" href="{{ url_for('blog.create') }}">+ New Post</a>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="posts-container">
+
+  {% for post in posts %}
+
+    <article class="post-card">
+
+      <header class="post-header">
+
+        <div>
+          <h2 class="post-title">{{ post['title'] }}</h2>
+
+          <div class="post-meta">
+            👤 {{ post['username'] }} •
+            📅 {{ post['created'].strftime('%Y-%m-%d') }}
+          </div>
+        </div>
+
+        {% if g.user and g.user['id'] == post['author_id'] %}
+          <a class="btn small" href="{{ url_for('blog.update', id=post['id']) }}">
+            Edit
+          </a>
+        {% endif %}
+
+      </header>
+
+      <p class="post-body">
+        {{ post['body'] }}
+      </p>
+
+    </article>
+
+  {% endfor %}
+
+</div>
+
+{% endblock %}

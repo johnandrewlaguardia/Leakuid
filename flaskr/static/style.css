@@ -1,0 +1,252 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(135deg, #2b2d42, #1a1a2e);
+  color: #628fe9;
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(10px);
+
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* NAV RIGHT */
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* WELCOME TEXT */
+.welcome {
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+/* BUTTON BASE */
+.btn {
+  padding: 9px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  color: white;
+  transition: 0.2s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* BUTTON TYPES */
+.login { background: #3b82f6; }
+.login:hover { background: #2563eb; }
+
+.logout { background: #ef4444; }
+.logout:hover { background: #dc2626; }
+
+.btn:not(.login):not(.logout) { background: #10b981; }
+.btn:not(.login):not(.logout):hover { background: #059669; }
+
+.primary { background: #3b82f6; }
+.primary:hover { background: #2563eb; }
+
+.danger { background: #ef4444; }
+.danger:hover { background: #dc2626; }
+
+/* LAYOUT */
+.content {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* HEADER */
+.page-header {
+  margin-bottom: 15px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+/* FLASH */
+.flash {
+  background: rgba(251, 191, 36, 0.12);
+  border-left: 4px solid #fbbf24;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  color: #fde68a;
+}
+
+/* MAIN CARD */
+.page-content {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+}
+
+.page-content:hover {
+  transform: translateY(-3px);
+}
+
+/* POSTS */
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px;
+  transition: 0.25s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-title {
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin-top: 4px;
+}
+
+.post-body {
+  margin-top: 10px;
+  line-height: 1.6;
+  color: #e5e7eb;
+  white-space: pre-line;
+}
+
+/* SMALL BUTTON */
+.small {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+/* AUTH SYSTEM */
+.auth-box {
+  max-width: 520px;
+  margin: 25px auto;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.auth-form input,
+.auth-form textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+.auth-form textarea {
+  resize: vertical;
+  min-height: 140px;
+  white-space: pre-wrap;
+}
+
+/* UTILITIES */
+.full {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.delete-box {
+  margin-top: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .nav-right {
+    justify-content: center;
+  }
+
+  .content {
+    margin: 20px;
+  }
+}

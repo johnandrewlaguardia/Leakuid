@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}{% endblock %} - Leakuid</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <h1 class="logo">Leakuid</h1>
+    </div>
+
+    <nav>
+      <ul class="nav-right">
+        {% if g.user %}
+          <li class="welcome">Hi, {{ g.user['username'] }}</li>
+          <li>
+            <a href="{{ url_for('auth.logout') }}" class="btn logout">Log Out</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ url_for('auth.register') }}" class="btn">Register</a>
+          </li>
+          <li>
+            <a href="{{ url_for('auth.login') }}" class="btn login">Log In</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      {% block header %}{% endblock %}
+    </section>
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- PAGE BODY -->
+    <section class="page-content">
+      {% block content %}{% endblock %}
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+   © Leakuid Web 2026
+  </footer>
+
+</body>
+</html>
+
