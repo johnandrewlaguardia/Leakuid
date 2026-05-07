@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <div class="posts-header">
+    <h1>{% block title %}Employees{% endblock %}</h1>
+
+    <a class="btn primary" href="{{ url_for('employee.create_employee') }}">+ New Employee</a>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="posts-container">
+
+  {% for emp in employees %}
+
+    <article class="post-card">
+
+      <header class="post-header">
+
+        <div>
+          <h2 class="post-title">{{ emp.first_name }} {{ emp.last_name }}</h2>
+
+          <div class="post-meta">
+            ID: {{ emp.employee_id }}
+          </div>
+        </div>
+
+        <a class="btn small" href="{{ url_for('employee.update_employee', id=emp.id) }}">
+          Edit
+        </a>
+
+      </header>
+
+      <p class="post-body">
+        Middle Name: {{ emp.middle_name or 'N/A' }}
+      </p>
+
+    </article>
+
+  {% endfor %}
+
+</div>
+
+{% endblock %}

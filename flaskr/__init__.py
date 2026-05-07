@@ -3,7 +3,7 @@ from flask import Flask
 from flask_migrate import Migrate
 
 from . import db as sqlite_db
-from .models import db as sqlalchemy_db
+from .employee.models import db as sqlalchemy_db
 
 
 def create_app(test_config=None):
@@ -43,6 +43,9 @@ def create_app(test_config=None):
 
     from . import blog
     app.register_blueprint(blog.bp)
+
+    from .employee import employee_bp
+    app.register_blueprint(employee_bp)
 
     return app
 
