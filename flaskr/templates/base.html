@@ -13,29 +13,65 @@
 
   <!-- HEADER / NAVBAR -->
   <header class="navbar">
+
     <div class="nav-left">
       <h1 class="logo">Leakuid</h1>
     </div>
 
     <nav>
       <ul class="nav-right">
+
+        <!-- HOME -->
+        <li>
+          <a href="{{ url_for('blog.index') }}" class="btn">
+            Home
+          </a>
+        </li>
+
+        <!-- EMPLOYEE -->
+        <li>
+          <a href="{{ url_for('employee.index') }}" class="btn">
+            Employees
+          </a>
+        </li>
+
         {% if g.user %}
-          <li class="welcome">Hi, {{ g.user['username'] }}</li>
-          <li>
-            <a href="{{ url_for('auth.logout') }}" class="btn logout">Log Out</a>
+
+          <!-- USERNAME -->
+          <li class="welcome">
+            Hi, {{ g.user['username'] }}
           </li>
+
+          <!-- LOGOUT -->
+          <li>
+            <a href="{{ url_for('auth.logout') }}" class="btn logout">
+              Log Out
+            </a>
+          </li>
+
         {% else %}
+
+          <!-- REGISTER -->
           <li>
-            <a href="{{ url_for('auth.register') }}" class="btn">Register</a>
+            <a href="{{ url_for('auth.register') }}" class="btn">
+              Register
+            </a>
           </li>
+
+          <!-- LOGIN -->
           <li>
-            <a href="{{ url_for('auth.login') }}" class="btn login">Log In</a>
+            <a href="{{ url_for('auth.login') }}" class="btn login">
+              Log In
+            </a>
           </li>
+
         {% endif %}
+
       </ul>
     </nav>
+
   </header>
-  
+
   <!-- MAIN CONTENT -->
   <main class="content">
 
@@ -62,9 +98,8 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-   © Leakuid Web 2026
+    © Leakuid Web 2026
   </footer>
 
 </body>
 </html>
-

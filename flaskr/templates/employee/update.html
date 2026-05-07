@@ -16,7 +16,7 @@
       <input
         name="employee_id"
         id="employee_id"
-        value="{{ request.form.get('employee_id', emp.employee_id) }}"
+        value="{{ request.form.get('employee_id', employee.employee_id) }}"
         required
       >
     </div>
@@ -26,7 +26,7 @@
       <input
         name="last_name"
         id="last_name"
-        value="{{ request.form.get('last_name', emp.last_name) }}"
+        value="{{ request.form.get('last_name', employee.last_name) }}"
         required
       >
     </div>
@@ -36,7 +36,7 @@
       <input
         name="first_name"
         id="first_name"
-        value="{{ request.form.get('first_name', emp.first_name) }}"
+        value="{{ request.form.get('first_name', employee.first_name) }}"
         required
       >
     </div>
@@ -46,7 +46,7 @@
       <input
         name="middle_name"
         id="middle_name"
-        value="{{ request.form.get('middle_name', emp.middle_name or '') }}"
+        value="{{ request.form.get('middle_name', employee.middle_name or '') }}"
       >
     </div>
 
@@ -58,7 +58,7 @@
 
   <!-- DELETE SECTION -->
   <form
-    action="{{ url_for('employee.delete_employee', id=emp.id) }}"
+    action="{{ url_for('employee.delete_employee', id=employee.id) }}"
     method="post"
     class="delete-box"
   >
@@ -70,3 +70,7 @@
       Delete Employee
     </button>
   </form>
+
+</div>
+
+{% endblock %}

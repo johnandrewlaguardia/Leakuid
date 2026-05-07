@@ -1,45 +1,39 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <div class="posts-header">
-    <h1>{% block title %}Employees{% endblock %}</h1>
-
-    <a class="btn primary" href="{{ url_for('employee.create_employee') }}">+ New Employee</a>
-  </div>
-{% endblock %}
-
 {% block content %}
 
-<div class="posts-container">
+<h1>Employee List</h1>
 
-  {% for emp in employees %}
+<a href="{{ url_for('employee.create_employee') }}">
+    Add Employee
+</a>
 
-    <article class="post-card">
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Actions</th>
+    </tr>
 
-      <header class="post-header">
+    {% for e in employees %}
+    <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.lastname }}</td>
+        <td>{{ e.firstname }}</td>
+        <td>{{ e.middlename }}</td>
+        <td>
+            <a href="{{ url_for('employee.update_employee', id=e.id) }}">
+                Edit
+            </a>
 
-        <div>
-          <h2 class="post-title">{{ emp.first_name }} {{ emp.last_name }}</h2>
-
-          <div class="post-meta">
-            ID: {{ emp.employee_id }}
-          </div>
-        </div>
-
-        <a class="btn small" href="{{ url_for('employee.update_employee', id=emp.id) }}">
-          Edit
-        </a>
-
-      </header>
-
-      <p class="post-body">
-        Middle Name: {{ emp.middle_name or 'N/A' }}
-      </p>
-
-    </article>
-
-  {% endfor %}
-
-</div>
+            <a href="{{ url_for('employee.delete_employee', id=e.id) }}">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
