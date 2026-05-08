@@ -50,7 +50,7 @@ def update_employee(id):
 
 
 # DELETE
-@employee_bp.route('/delete/<int:id>')
+@employee_bp.route('/delete/<int:id>', methods=['POST'])
 def delete_employee(id):
     employee = Employee.query.get_or_404(id)
 
